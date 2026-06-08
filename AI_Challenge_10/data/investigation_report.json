@@ -1,0 +1,970 @@
+{
+  "recommended_threshold": {
+    "threshold": 1,
+    "review_volume": 235,
+    "precision": 0.8255,
+    "recall": 0.97,
+    "false_positive_rate": 0.0228,
+    "f1_score": 0.892
+  },
+  "threshold_curve": [
+    {
+      "threshold": 1,
+      "review_volume": 235,
+      "precision": 0.8255,
+      "recall": 0.97,
+      "false_positive_rate": 0.0228,
+      "f1_score": 0.892
+    },
+    {
+      "threshold": 10,
+      "review_volume": 235,
+      "precision": 0.8255,
+      "recall": 0.97,
+      "false_positive_rate": 0.0228,
+      "f1_score": 0.892
+    },
+    {
+      "threshold": 15,
+      "review_volume": 109,
+      "precision": 0.9358,
+      "recall": 0.51,
+      "false_positive_rate": 0.0039,
+      "f1_score": 0.6602
+    },
+    {
+      "threshold": 20,
+      "review_volume": 50,
+      "precision": 0.98,
+      "recall": 0.245,
+      "false_positive_rate": 0.0006,
+      "f1_score": 0.392
+    },
+    {
+      "threshold": 25,
+      "review_volume": 27,
+      "precision": 1.0,
+      "recall": 0.135,
+      "false_positive_rate": 0.0,
+      "f1_score": 0.2379
+    },
+    {
+      "threshold": 30,
+      "review_volume": 16,
+      "precision": 1.0,
+      "recall": 0.08,
+      "false_positive_rate": 0.0,
+      "f1_score": 0.1481
+    },
+    {
+      "threshold": 40,
+      "review_volume": 15,
+      "precision": 1.0,
+      "recall": 0.075,
+      "false_positive_rate": 0.0,
+      "f1_score": 0.1395
+    }
+  ],
+  "review_queue": [
+    {
+      "claim_id": "CLM-01891",
+      "member_id": "MBR-0401",
+      "provider_id": "PROV-024",
+      "provider_name": "Mekong General Hospital #24",
+      "claim_date": "2024-04-24",
+      "claim_type": "OUTPATIENT",
+      "submitted_amount": 23760.0,
+      "risk_score": 40,
+      "recommended_action": "Open special investigation case",
+      "rules": [
+        "upcoding",
+        "unbundling",
+        "diagnosis_procedure_mismatch"
+      ],
+      "evidence": [
+        "Submitted amount 23,760 for procedure OP-101 is 5.3 standard deviations above the mean of 3,217",
+        "Procedures OP-101, OP-201, OP-301 were billed separately although bundle BND-CARDIAC should be used",
+        "Diagnosis M54.5 is not clinically associated with procedure(s) OP-301"
+      ]
+    },
+    {
+      "claim_id": "CLM-01893",
+      "member_id": "MBR-0430",
+      "provider_id": "PROV-020",
+      "provider_name": "Unity Health Center #20",
+      "claim_date": "2024-07-31",
+      "claim_type": "INPATIENT",
+      "submitted_amount": 78300.0,
+      "risk_score": 40,
+      "recommended_action": "Open special investigation case",
+      "rules": [
+        "upcoding",
+        "unbundling",
+        "diagnosis_procedure_mismatch"
+      ],
+      "evidence": [
+        "Submitted amount 78,300 for procedure IP-101 is 34.8 standard deviations above the mean of 26,296",
+        "Procedures IP-101, OP-102, SUR-101 were billed separately although bundle BND-MINOR-SURGERY should be used",
+        "Diagnosis O80 is not clinically associated with procedure(s) OP-102, SUR-101"
+      ]
+    },
+    {
+      "claim_id": "CLM-01896",
+      "member_id": "MBR-0420",
+      "provider_id": "PROV-034",
+      "provider_name": "Mekong General Hospital #34",
+      "claim_date": "2024-11-03",
+      "claim_type": "OUTPATIENT",
+      "submitted_amount": 23760.0,
+      "risk_score": 40,
+      "recommended_action": "Open special investigation case",
+      "rules": [
+        "upcoding",
+        "unbundling",
+        "diagnosis_procedure_mismatch"
+      ],
+      "evidence": [
+        "Submitted amount 23,760 for procedure OP-101 is 5.3 standard deviations above the mean of 3,217",
+        "Procedures OP-101, OP-201, OP-301 were billed separately although bundle BND-CARDIAC should be used",
+        "Diagnosis E11.9 is not clinically associated with procedure(s) OP-201, OP-301"
+      ]
+    },
+    {
+      "claim_id": "CLM-01898",
+      "member_id": "MBR-0285",
+      "provider_id": "PROV-016",
+      "provider_name": "Sunrise Specialty Clinic #16",
+      "claim_date": "2024-07-19",
+      "claim_type": "INPATIENT",
+      "submitted_amount": 78300.0,
+      "risk_score": 40,
+      "recommended_action": "Open special investigation case",
+      "rules": [
+        "upcoding",
+        "unbundling",
+        "diagnosis_procedure_mismatch"
+      ],
+      "evidence": [
+        "Submitted amount 78,300 for procedure IP-101 is 34.8 standard deviations above the mean of 26,296",
+        "Procedures IP-101, OP-102, SUR-101 were billed separately although bundle BND-MINOR-SURGERY should be used",
+        "Diagnosis K35.8 is not clinically associated with procedure(s) OP-102"
+      ]
+    },
+    {
+      "claim_id": "CLM-01900",
+      "member_id": "MBR-0220",
+      "provider_id": "PROV-037",
+      "provider_name": "Pacific Wellness Hospital #37",
+      "claim_date": "2024-03-06",
+      "claim_type": "OUTPATIENT",
+      "submitted_amount": 27000.0,
+      "risk_score": 40,
+      "recommended_action": "Open special investigation case",
+      "rules": [
+        "upcoding",
+        "unbundling",
+        "diagnosis_procedure_mismatch"
+      ],
+      "evidence": [
+        "Submitted amount 27,000 for procedure OP-101 is 6.1 standard deviations above the mean of 3,217",
+        "Procedures OP-101, OP-102, OP-401 were billed separately although bundle BND-DIABETES should be used",
+        "Diagnosis H10.9 is not clinically associated with procedure(s) OP-401"
+      ]
+    },
+    {
+      "claim_id": "CLM-01903",
+      "member_id": "MBR-0051",
+      "provider_id": "PROV-015",
+      "provider_name": "Emerald Health Partners #15",
+      "claim_date": "2024-12-29",
+      "claim_type": "INPATIENT",
+      "submitted_amount": 78300.0,
+      "risk_score": 40,
+      "recommended_action": "Open special investigation case",
+      "rules": [
+        "upcoding",
+        "unbundling",
+        "diagnosis_procedure_mismatch"
+      ],
+      "evidence": [
+        "Submitted amount 78,300 for procedure IP-101 is 34.8 standard deviations above the mean of 26,296",
+        "Procedures IP-101, OP-102, SUR-101 were billed separately although bundle BND-MINOR-SURGERY should be used",
+        "Diagnosis K35.8 is not clinically associated with procedure(s) OP-102"
+      ]
+    },
+    {
+      "claim_id": "CLM-01904",
+      "member_id": "MBR-0061",
+      "provider_id": "PROV-033",
+      "provider_name": "Lotus Dental Center #33",
+      "claim_date": "2024-11-19",
+      "claim_type": "INPATIENT",
+      "submitted_amount": 120420.0,
+      "risk_score": 40,
+      "recommended_action": "Open special investigation case",
+      "rules": [
+        "upcoding",
+        "unbundling",
+        "diagnosis_procedure_mismatch"
+      ],
+      "evidence": [
+        "Submitted amount 120,420 for procedure IP-201 is 22.2 standard deviations above the mean of 37,024",
+        "Procedures IP-201, OP-201, SUR-201 were billed separately although bundle BND-ORTHO should be used",
+        "Diagnosis O80 is not clinically associated with procedure(s) OP-201, SUR-201"
+      ]
+    },
+    {
+      "claim_id": "CLM-01905",
+      "member_id": "MBR-0322",
+      "provider_id": "PROV-049",
+      "provider_name": "Golden Bridge Dental #49",
+      "claim_date": "2024-05-13",
+      "claim_type": "OUTPATIENT",
+      "submitted_amount": 27000.0,
+      "risk_score": 40,
+      "recommended_action": "Open special investigation case",
+      "rules": [
+        "upcoding",
+        "unbundling",
+        "diagnosis_procedure_mismatch"
+      ],
+      "evidence": [
+        "Submitted amount 27,000 for procedure OP-101 is 6.1 standard deviations above the mean of 3,217",
+        "Procedures OP-101, OP-102, OP-401 were billed separately although bundle BND-DIABETES should be used",
+        "Diagnosis M54.5 is not clinically associated with procedure(s) OP-102, OP-401"
+      ]
+    },
+    {
+      "claim_id": "CLM-01906",
+      "member_id": "MBR-0486",
+      "provider_id": "PROV-011",
+      "provider_name": "Bangkok Care Clinic #11",
+      "claim_date": "2024-06-14",
+      "claim_type": "OUTPATIENT",
+      "submitted_amount": 23760.0,
+      "risk_score": 40,
+      "recommended_action": "Open special investigation case",
+      "rules": [
+        "upcoding",
+        "unbundling",
+        "diagnosis_procedure_mismatch"
+      ],
+      "evidence": [
+        "Submitted amount 23,760 for procedure OP-101 is 5.3 standard deviations above the mean of 3,217",
+        "Procedures OP-101, OP-201, OP-301 were billed separately although bundle BND-CARDIAC should be used",
+        "Diagnosis I10 is not clinically associated with procedure(s) OP-201"
+      ]
+    },
+    {
+      "claim_id": "CLM-01908",
+      "member_id": "MBR-0322",
+      "provider_id": "PROV-001",
+      "provider_name": "Bangkok Care Clinic #01",
+      "claim_date": "2024-10-30",
+      "claim_type": "INPATIENT",
+      "submitted_amount": 78300.0,
+      "risk_score": 40,
+      "recommended_action": "Open special investigation case",
+      "rules": [
+        "upcoding",
+        "unbundling",
+        "diagnosis_procedure_mismatch"
+      ],
+      "evidence": [
+        "Submitted amount 78,300 for procedure IP-101 is 34.8 standard deviations above the mean of 26,296",
+        "Procedures IP-101, OP-102, SUR-101 were billed separately although bundle BND-MINOR-SURGERY should be used",
+        "Diagnosis K35.8 is not clinically associated with procedure(s) OP-102"
+      ]
+    },
+    {
+      "claim_id": "CLM-01910",
+      "member_id": "MBR-0196",
+      "provider_id": "PROV-037",
+      "provider_name": "Pacific Wellness Hospital #37",
+      "claim_date": "2024-01-13",
+      "claim_type": "OUTPATIENT",
+      "submitted_amount": 27000.0,
+      "risk_score": 40,
+      "recommended_action": "Open special investigation case",
+      "rules": [
+        "upcoding",
+        "unbundling",
+        "diagnosis_procedure_mismatch"
+      ],
+      "evidence": [
+        "Submitted amount 27,000 for procedure OP-101 is 6.1 standard deviations above the mean of 3,217",
+        "Procedures OP-101, OP-102, OP-401 were billed separately although bundle BND-DIABETES should be used",
+        "Diagnosis H10.9 is not clinically associated with procedure(s) OP-401"
+      ]
+    },
+    {
+      "claim_id": "CLM-01911",
+      "member_id": "MBR-0067",
+      "provider_id": "PROV-047",
+      "provider_name": "Pacific Wellness Hospital #47",
+      "claim_date": "2024-08-20",
+      "claim_type": "OUTPATIENT",
+      "submitted_amount": 23760.0,
+      "risk_score": 40,
+      "recommended_action": "Open special investigation case",
+      "rules": [
+        "upcoding",
+        "unbundling",
+        "diagnosis_procedure_mismatch"
+      ],
+      "evidence": [
+        "Submitted amount 23,760 for procedure OP-101 is 5.3 standard deviations above the mean of 3,217",
+        "Procedures OP-101, OP-201, OP-301 were billed separately although bundle BND-CARDIAC should be used",
+        "Diagnosis H10.9 is not clinically associated with procedure(s) OP-201, OP-301"
+      ]
+    },
+    {
+      "claim_id": "CLM-01913",
+      "member_id": "MBR-0335",
+      "provider_id": "PROV-016",
+      "provider_name": "Sunrise Specialty Clinic #16",
+      "claim_date": "2024-04-23",
+      "claim_type": "INPATIENT",
+      "submitted_amount": 78300.0,
+      "risk_score": 40,
+      "recommended_action": "Open special investigation case",
+      "rules": [
+        "upcoding",
+        "unbundling",
+        "diagnosis_procedure_mismatch"
+      ],
+      "evidence": [
+        "Submitted amount 78,300 for procedure IP-101 is 34.8 standard deviations above the mean of 26,296",
+        "Procedures IP-101, OP-102, SUR-101 were billed separately although bundle BND-MINOR-SURGERY should be used",
+        "Diagnosis N18.9 is not clinically associated with procedure(s) OP-102, SUR-101"
+      ]
+    },
+    {
+      "claim_id": "CLM-01914",
+      "member_id": "MBR-0275",
+      "provider_id": "PROV-013",
+      "provider_name": "Lotus Dental Center #13",
+      "claim_date": "2024-05-05",
+      "claim_type": "INPATIENT",
+      "submitted_amount": 120420.0,
+      "risk_score": 40,
+      "recommended_action": "Open special investigation case",
+      "rules": [
+        "upcoding",
+        "unbundling",
+        "diagnosis_procedure_mismatch"
+      ],
+      "evidence": [
+        "Submitted amount 120,420 for procedure IP-201 is 22.2 standard deviations above the mean of 37,024",
+        "Procedures IP-201, OP-201, SUR-201 were billed separately although bundle BND-ORTHO should be used",
+        "Diagnosis O80 is not clinically associated with procedure(s) OP-201, SUR-201"
+      ]
+    },
+    {
+      "claim_id": "CLM-01915",
+      "member_id": "MBR-0134",
+      "provider_id": "PROV-050",
+      "provider_name": "Unity Health Center #50",
+      "claim_date": "2024-12-03",
+      "claim_type": "OUTPATIENT",
+      "submitted_amount": 27000.0,
+      "risk_score": 40,
+      "recommended_action": "Open special investigation case",
+      "rules": [
+        "upcoding",
+        "unbundling",
+        "diagnosis_procedure_mismatch"
+      ],
+      "evidence": [
+        "Submitted amount 27,000 for procedure OP-101 is 6.1 standard deviations above the mean of 3,217",
+        "Procedures OP-101, OP-102, OP-401 were billed separately although bundle BND-DIABETES should be used",
+        "Diagnosis J06.9 is not clinically associated with procedure(s) OP-401"
+      ]
+    },
+    {
+      "claim_id": "CLM-01822",
+      "member_id": "MBR-0129",
+      "provider_id": "PROV-001",
+      "provider_name": "Bangkok Care Clinic #01",
+      "claim_date": "2024-10-10",
+      "claim_type": "DENTAL",
+      "submitted_amount": 3609.21,
+      "risk_score": 30,
+      "recommended_action": "Open special investigation case",
+      "rules": [
+        "duplicate_claim",
+        "upcoding"
+      ],
+      "evidence": [
+        "Claim duplicates an earlier submission for member MBR-0129, provider PROV-001, date 2024-10-10, and diagnosis K02.9",
+        "Submitted amount 3,609 for procedure DEN-101 is 2.4 standard deviations above the mean of 2,969"
+      ]
+    },
+    {
+      "claim_id": "CLM-01892",
+      "member_id": "MBR-0138",
+      "provider_id": "PROV-019",
+      "provider_name": "Golden Bridge Dental #19",
+      "claim_date": "2024-12-03",
+      "claim_type": "DENTAL",
+      "submitted_amount": 30240.0,
+      "risk_score": 27,
+      "recommended_action": "Request medical records before payment",
+      "rules": [
+        "upcoding",
+        "unbundling"
+      ],
+      "evidence": [
+        "Submitted amount 30,240 for procedure DEN-101 is 103.7 standard deviations above the mean of 2,969",
+        "Procedures DEN-101, DEN-201, DEN-301 were billed separately although bundle BND-DENTAL should be used"
+      ]
+    },
+    {
+      "claim_id": "CLM-01894",
+      "member_id": "MBR-0003",
+      "provider_id": "PROV-016",
+      "provider_name": "Sunrise Specialty Clinic #16",
+      "claim_date": "2024-07-31",
+      "claim_type": "INPATIENT",
+      "submitted_amount": 120420.0,
+      "risk_score": 27,
+      "recommended_action": "Request medical records before payment",
+      "rules": [
+        "upcoding",
+        "unbundling"
+      ],
+      "evidence": [
+        "Submitted amount 120,420 for procedure IP-201 is 22.2 standard deviations above the mean of 37,024",
+        "Procedures IP-201, OP-201, SUR-201 were billed separately although bundle BND-ORTHO should be used"
+      ]
+    },
+    {
+      "claim_id": "CLM-01895",
+      "member_id": "MBR-0014",
+      "provider_id": "PROV-001",
+      "provider_name": "Bangkok Care Clinic #01",
+      "claim_date": "2024-03-19",
+      "claim_type": "OUTPATIENT",
+      "submitted_amount": 27000.0,
+      "risk_score": 27,
+      "recommended_action": "Request medical records before payment",
+      "rules": [
+        "upcoding",
+        "unbundling"
+      ],
+      "evidence": [
+        "Submitted amount 27,000 for procedure OP-101 is 6.1 standard deviations above the mean of 3,217",
+        "Procedures OP-101, OP-102, OP-401 were billed separately although bundle BND-DIABETES should be used"
+      ]
+    },
+    {
+      "claim_id": "CLM-01897",
+      "member_id": "MBR-0088",
+      "provider_id": "PROV-022",
+      "provider_name": "Saigon Family Medical #22",
+      "claim_date": "2024-10-19",
+      "claim_type": "DENTAL",
+      "submitted_amount": 30240.0,
+      "risk_score": 27,
+      "recommended_action": "Request medical records before payment",
+      "rules": [
+        "upcoding",
+        "unbundling"
+      ],
+      "evidence": [
+        "Submitted amount 30,240 for procedure DEN-101 is 103.7 standard deviations above the mean of 2,969",
+        "Procedures DEN-101, DEN-201, DEN-301 were billed separately although bundle BND-DENTAL should be used"
+      ]
+    },
+    {
+      "claim_id": "CLM-01899",
+      "member_id": "MBR-0330",
+      "provider_id": "PROV-040",
+      "provider_name": "Unity Health Center #40",
+      "claim_date": "2024-07-20",
+      "claim_type": "INPATIENT",
+      "submitted_amount": 120420.0,
+      "risk_score": 27,
+      "recommended_action": "Request medical records before payment",
+      "rules": [
+        "upcoding",
+        "unbundling"
+      ],
+      "evidence": [
+        "Submitted amount 120,420 for procedure IP-201 is 22.2 standard deviations above the mean of 37,024",
+        "Procedures IP-201, OP-201, SUR-201 were billed separately although bundle BND-ORTHO should be used"
+      ]
+    },
+    {
+      "claim_id": "CLM-01901",
+      "member_id": "MBR-0373",
+      "provider_id": "PROV-025",
+      "provider_name": "Emerald Health Partners #25",
+      "claim_date": "2024-03-29",
+      "claim_type": "OUTPATIENT",
+      "submitted_amount": 23760.0,
+      "risk_score": 27,
+      "recommended_action": "Request medical records before payment",
+      "rules": [
+        "upcoding",
+        "unbundling"
+      ],
+      "evidence": [
+        "Submitted amount 23,760 for procedure OP-101 is 5.3 standard deviations above the mean of 3,217",
+        "Procedures OP-101, OP-201, OP-301 were billed separately although bundle BND-CARDIAC should be used"
+      ]
+    },
+    {
+      "claim_id": "CLM-01902",
+      "member_id": "MBR-0265",
+      "provider_id": "PROV-021",
+      "provider_name": "Bangkok Care Clinic #21",
+      "claim_date": "2024-03-22",
+      "claim_type": "DENTAL",
+      "submitted_amount": 30240.0,
+      "risk_score": 27,
+      "recommended_action": "Request medical records before payment",
+      "rules": [
+        "upcoding",
+        "unbundling"
+      ],
+      "evidence": [
+        "Submitted amount 30,240 for procedure DEN-101 is 103.7 standard deviations above the mean of 2,969",
+        "Procedures DEN-101, DEN-201, DEN-301 were billed separately although bundle BND-DENTAL should be used"
+      ]
+    },
+    {
+      "claim_id": "CLM-01907",
+      "member_id": "MBR-0048",
+      "provider_id": "PROV-006",
+      "provider_name": "Sunrise Specialty Clinic #06",
+      "claim_date": "2024-01-14",
+      "claim_type": "DENTAL",
+      "submitted_amount": 30240.0,
+      "risk_score": 27,
+      "recommended_action": "Request medical records before payment",
+      "rules": [
+        "upcoding",
+        "unbundling"
+      ],
+      "evidence": [
+        "Submitted amount 30,240 for procedure DEN-101 is 103.7 standard deviations above the mean of 2,969",
+        "Procedures DEN-101, DEN-201, DEN-301 were billed separately although bundle BND-DENTAL should be used"
+      ]
+    },
+    {
+      "claim_id": "CLM-01909",
+      "member_id": "MBR-0317",
+      "provider_id": "PROV-002",
+      "provider_name": "Saigon Family Medical #02",
+      "claim_date": "2024-12-28",
+      "claim_type": "INPATIENT",
+      "submitted_amount": 120420.0,
+      "risk_score": 27,
+      "recommended_action": "Request medical records before payment",
+      "rules": [
+        "upcoding",
+        "unbundling"
+      ],
+      "evidence": [
+        "Submitted amount 120,420 for procedure IP-201 is 22.2 standard deviations above the mean of 37,024",
+        "Procedures IP-201, OP-201, SUR-201 were billed separately although bundle BND-ORTHO should be used"
+      ]
+    },
+    {
+      "claim_id": "CLM-01912",
+      "member_id": "MBR-0399",
+      "provider_id": "PROV-041",
+      "provider_name": "Bangkok Care Clinic #41",
+      "claim_date": "2024-07-02",
+      "claim_type": "DENTAL",
+      "submitted_amount": 30240.0,
+      "risk_score": 27,
+      "recommended_action": "Request medical records before payment",
+      "rules": [
+        "upcoding",
+        "unbundling"
+      ],
+      "evidence": [
+        "Submitted amount 30,240 for procedure DEN-101 is 103.7 standard deviations above the mean of 2,969",
+        "Procedures DEN-101, DEN-201, DEN-301 were billed separately although bundle BND-DENTAL should be used"
+      ]
+    },
+    {
+      "claim_id": "CLM-01927",
+      "member_id": "MBR-0311",
+      "provider_id": "PROV-049",
+      "provider_name": "Golden Bridge Dental #49",
+      "claim_date": "2024-08-14",
+      "claim_type": "OUTPATIENT",
+      "submitted_amount": 4621.0,
+      "risk_score": 27,
+      "recommended_action": "Request medical records before payment",
+      "rules": [
+        "rapid_resubmission",
+        "phantom_billing"
+      ],
+      "evidence": [
+        "Member MBR-0311 submitted diagnosis J06.9 again after 4 days; prior claim CLM-00610 was on 2024-08-10",
+        "Provider PROV-049 submitted 31 claims on 2024-08-14, exceeding the 30-claim daily review threshold"
+      ]
+    },
+    {
+      "claim_id": "CLM-01869",
+      "member_id": "MBR-0280",
+      "provider_id": "PROV-045",
+      "provider_name": "Emerald Health Partners #45",
+      "claim_date": "2024-03-26",
+      "claim_type": "DENTAL",
+      "submitted_amount": 14756.0,
+      "risk_score": 23,
+      "recommended_action": "Request medical records before payment",
+      "rules": [
+        "rapid_resubmission",
+        "upcoding"
+      ],
+      "evidence": [
+        "Member MBR-0280 submitted diagnosis K02.9 again after 5 days; prior claim CLM-00185 was on 2024-03-21",
+        "Submitted amount 14,756 for procedure DEN-201 is 8.0 standard deviations above the mean of 9,070"
+      ]
+    },
+    {
+      "claim_id": "CLM-01943",
+      "member_id": "MBR-0327",
+      "provider_id": "PROV-001",
+      "provider_name": "Bangkok Care Clinic #01",
+      "claim_date": "2024-09-07",
+      "claim_type": "INPATIENT",
+      "submitted_amount": 46318.49,
+      "risk_score": 23,
+      "recommended_action": "Request medical records before payment",
+      "rules": [
+        "upcoding",
+        "weekend_anomaly"
+      ],
+      "evidence": [
+        "Submitted amount 46,318 for procedure SUR-101 is 2.2 standard deviations above the mean of 41,788",
+        "Surgical procedure(s) SUR-101 occurred on a weekend for provider PROV-001, whose historical weekend volume is 1.3%"
+      ]
+    },
+    {
+      "claim_id": "CLM-00950",
+      "member_id": "MBR-0416",
+      "provider_id": "PROV-033",
+      "provider_name": "Lotus Dental Center #33",
+      "claim_date": "2024-02-01",
+      "claim_type": "INPATIENT",
+      "submitted_amount": 47954.07,
+      "risk_score": 20,
+      "recommended_action": "Request medical records before payment",
+      "rules": [
+        "upcoding",
+        "amount_clustering"
+      ],
+      "evidence": [
+        "Submitted amount 47,954 for procedure SUR-101 is 3.0 standard deviations above the mean of 41,788",
+        "Amount 47,954 is 96% of the 50,000 auto-approval threshold"
+      ]
+    }
+  ],
+  "provider_profiles": [
+    {
+      "provider_id": "PROV-049",
+      "provider_name": "Golden Bridge Dental #49",
+      "total_claims": 53,
+      "flagged_claims": 32,
+      "flagged_rate": 0.6038,
+      "average_risk_score": 10.89,
+      "suspicious_amount": 158328.21,
+      "total_amount": 466465.56,
+      "dominant_rules": [
+        "phantom_billing",
+        "upcoding",
+        "unbundling"
+      ],
+      "provider_risk_score": 63
+    },
+    {
+      "provider_id": "PROV-023",
+      "provider_name": "Lotus Dental Center #23",
+      "total_claims": 31,
+      "flagged_claims": 7,
+      "flagged_rate": 0.2258,
+      "average_risk_score": 3.29,
+      "suspicious_amount": 317087.09,
+      "total_amount": 1029982.15,
+      "dominant_rules": [
+        "upcoding",
+        "diagnosis_procedure_mismatch",
+        "amount_clustering"
+      ],
+      "provider_risk_score": 27
+    },
+    {
+      "provider_id": "PROV-033",
+      "provider_name": "Lotus Dental Center #33",
+      "total_claims": 31,
+      "flagged_claims": 6,
+      "flagged_rate": 0.1935,
+      "average_risk_score": 3.84,
+      "suspicious_amount": 480568.08,
+      "total_amount": 979018.16,
+      "dominant_rules": [
+        "upcoding",
+        "amount_clustering",
+        "diagnosis_procedure_mismatch"
+      ],
+      "provider_risk_score": 25
+    },
+    {
+      "provider_id": "PROV-024",
+      "provider_name": "Mekong General Hospital #24",
+      "total_claims": 37,
+      "flagged_claims": 6,
+      "flagged_rate": 0.1622,
+      "average_risk_score": 2.86,
+      "suspicious_amount": 276705.35,
+      "total_amount": 846329.61,
+      "dominant_rules": [
+        "upcoding",
+        "rapid_resubmission",
+        "unbundling"
+      ],
+      "provider_risk_score": 24
+    },
+    {
+      "provider_id": "PROV-001",
+      "provider_name": "Bangkok Care Clinic #01",
+      "total_claims": 522,
+      "flagged_claims": 67,
+      "flagged_rate": 0.1284,
+      "average_risk_score": 1.86,
+      "suspicious_amount": 2075882.12,
+      "total_amount": 13057318.71,
+      "dominant_rules": [
+        "duplicate_claim",
+        "weekend_anomaly",
+        "upcoding"
+      ],
+      "provider_risk_score": 23
+    },
+    {
+      "provider_id": "PROV-014",
+      "provider_name": "Mekong General Hospital #14",
+      "total_claims": 33,
+      "flagged_claims": 6,
+      "flagged_rate": 0.1818,
+      "average_risk_score": 2.52,
+      "suspicious_amount": 287218.82,
+      "total_amount": 837497.13,
+      "dominant_rules": [
+        "rapid_resubmission",
+        "upcoding",
+        "amount_clustering"
+      ],
+      "provider_risk_score": 23
+    },
+    {
+      "provider_id": "PROV-021",
+      "provider_name": "Bangkok Care Clinic #21",
+      "total_claims": 29,
+      "flagged_claims": 5,
+      "flagged_rate": 0.1724,
+      "average_risk_score": 2.76,
+      "suspicious_amount": 256103.15,
+      "total_amount": 798410.66,
+      "dominant_rules": [
+        "upcoding",
+        "rapid_resubmission",
+        "unbundling"
+      ],
+      "provider_risk_score": 23
+    },
+    {
+      "provider_id": "PROV-037",
+      "provider_name": "Pacific Wellness Hospital #37",
+      "total_claims": 22,
+      "flagged_claims": 3,
+      "flagged_rate": 0.1364,
+      "average_risk_score": 4.09,
+      "suspicious_amount": 56713.36,
+      "total_amount": 571601.59,
+      "dominant_rules": [
+        "upcoding",
+        "unbundling",
+        "diagnosis_procedure_mismatch"
+      ],
+      "provider_risk_score": 22
+    },
+    {
+      "provider_id": "PROV-008",
+      "provider_name": "CityCare Medical Group #08",
+      "total_claims": 29,
+      "flagged_claims": 5,
+      "flagged_rate": 0.1724,
+      "average_risk_score": 2.72,
+      "suspicious_amount": 277173.22,
+      "total_amount": 889137.47,
+      "dominant_rules": [
+        "upcoding",
+        "diagnosis_procedure_mismatch",
+        "amount_clustering"
+      ],
+      "provider_risk_score": 21
+    },
+    {
+      "provider_id": "PROV-029",
+      "provider_name": "Golden Bridge Dental #29",
+      "total_claims": 32,
+      "flagged_claims": 5,
+      "flagged_rate": 0.1562,
+      "average_risk_score": 2.06,
+      "suspicious_amount": 156683.07,
+      "total_amount": 777192.11,
+      "dominant_rules": [
+        "rapid_resubmission",
+        "upcoding",
+        "diagnosis_procedure_mismatch"
+      ],
+      "provider_risk_score": 21
+    }
+  ],
+  "member_provider_hotspots": [
+    {
+      "member_id": "MBR-0322",
+      "provider_id": "PROV-049",
+      "claim_count": 2,
+      "flagged_claims": 2,
+      "highest_risk_score": 40,
+      "flagged_amount": 31742.0,
+      "dominant_rules": [
+        "upcoding",
+        "unbundling",
+        "diagnosis_procedure_mismatch"
+      ]
+    },
+    {
+      "member_id": "MBR-0061",
+      "provider_id": "PROV-033",
+      "claim_count": 1,
+      "flagged_claims": 1,
+      "highest_risk_score": 40,
+      "flagged_amount": 120420.0,
+      "dominant_rules": [
+        "upcoding",
+        "unbundling",
+        "diagnosis_procedure_mismatch"
+      ]
+    },
+    {
+      "member_id": "MBR-0275",
+      "provider_id": "PROV-013",
+      "claim_count": 1,
+      "flagged_claims": 1,
+      "highest_risk_score": 40,
+      "flagged_amount": 120420.0,
+      "dominant_rules": [
+        "upcoding",
+        "unbundling",
+        "diagnosis_procedure_mismatch"
+      ]
+    },
+    {
+      "member_id": "MBR-0430",
+      "provider_id": "PROV-020",
+      "claim_count": 1,
+      "flagged_claims": 1,
+      "highest_risk_score": 40,
+      "flagged_amount": 78300.0,
+      "dominant_rules": [
+        "upcoding",
+        "unbundling",
+        "diagnosis_procedure_mismatch"
+      ]
+    },
+    {
+      "member_id": "MBR-0285",
+      "provider_id": "PROV-016",
+      "claim_count": 1,
+      "flagged_claims": 1,
+      "highest_risk_score": 40,
+      "flagged_amount": 78300.0,
+      "dominant_rules": [
+        "upcoding",
+        "unbundling",
+        "diagnosis_procedure_mismatch"
+      ]
+    },
+    {
+      "member_id": "MBR-0051",
+      "provider_id": "PROV-015",
+      "claim_count": 1,
+      "flagged_claims": 1,
+      "highest_risk_score": 40,
+      "flagged_amount": 78300.0,
+      "dominant_rules": [
+        "upcoding",
+        "unbundling",
+        "diagnosis_procedure_mismatch"
+      ]
+    },
+    {
+      "member_id": "MBR-0322",
+      "provider_id": "PROV-001",
+      "claim_count": 1,
+      "flagged_claims": 1,
+      "highest_risk_score": 40,
+      "flagged_amount": 78300.0,
+      "dominant_rules": [
+        "upcoding",
+        "unbundling",
+        "diagnosis_procedure_mismatch"
+      ]
+    },
+    {
+      "member_id": "MBR-0335",
+      "provider_id": "PROV-016",
+      "claim_count": 1,
+      "flagged_claims": 1,
+      "highest_risk_score": 40,
+      "flagged_amount": 78300.0,
+      "dominant_rules": [
+        "upcoding",
+        "unbundling",
+        "diagnosis_procedure_mismatch"
+      ]
+    },
+    {
+      "member_id": "MBR-0220",
+      "provider_id": "PROV-037",
+      "claim_count": 1,
+      "flagged_claims": 1,
+      "highest_risk_score": 40,
+      "flagged_amount": 27000.0,
+      "dominant_rules": [
+        "upcoding",
+        "unbundling",
+        "diagnosis_procedure_mismatch"
+      ]
+    },
+    {
+      "member_id": "MBR-0196",
+      "provider_id": "PROV-037",
+      "claim_count": 1,
+      "flagged_claims": 1,
+      "highest_risk_score": 40,
+      "flagged_amount": 27000.0,
+      "dominant_rules": [
+        "upcoding",
+        "unbundling",
+        "diagnosis_procedure_mismatch"
+      ]
+    }
+  ],
+  "operational_notes": [
+    "Use the recommended threshold as a review trigger, not an automatic denial rule.",
+    "Start with provider profiles when multiple high-risk claims share the same provider.",
+    "Use member-provider hotspots to find concentrated suspicious relationships.",
+    "Escalate only after checking the evidence strings attached to each claim."
+  ]
+}

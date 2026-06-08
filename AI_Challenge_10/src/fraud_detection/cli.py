@@ -4,6 +4,7 @@ import argparse
 from pathlib import Path
 
 from .generator import generate_claims
+from .investigation import build_investigation_report, investigation_markdown
 from .metrics import analysis_markdown, build_analysis_report, evaluate_metrics, markdown_report, timed
 from .models import read_claims_csv, write_claims_csv, write_json
 from .scoring import score_claims
@@ -17,6 +18,8 @@ METRICS_JSON = DATA_DIR / "metrics_report.json"
 METRICS_MD = DATA_DIR / "metrics_report.md"
 ANALYSIS_JSON = DATA_DIR / "analysis_report.json"
 ANALYSIS_MD = DATA_DIR / "analysis_report.md"
+INVESTIGATION_JSON = DATA_DIR / "investigation_report.json"
+INVESTIGATION_MD = DATA_DIR / "investigation_report.md"
 
 
 def generate_command(args: argparse.Namespace) -> None:
@@ -30,12 +33,15 @@ def score_command(args: argparse.Namespace) -> None:
     results, processing_seconds = timed(lambda: score_claims(claims))
     metrics = evaluate_metrics(claims, results, processing_seconds=processing_seconds)
     analysis = build_analysis_report(claims, results)
+    investigation = build_investigation_report(claims, results)
 
     write_json(SCORED_JSON, [result.to_dict() for result in results])
     write_json(METRICS_JSON, metrics.to_dict())
     write_json(ANALYSIS_JSON, analysis)
+    write_json(INVESTIGATION_JSON, investigation)
     METRICS_MD.write_text(markdown_report(metrics), encoding="utf-8")
     ANALYSIS_MD.write_text(analysis_markdown(analysis), encoding="utf-8")
+    INVESTIGATION_MD.write_text(investigation_markdown(investigation), encoding="utf-8")
 
     print(f"Scored {len(claims):,} claims in {processing_seconds:.4f}s")
     print(f"Recall: {metrics.recall:.2%}")
@@ -43,7 +49,8 @@ def score_command(args: argparse.Namespace) -> None:
     print(
         "Wrote "
         f"{SCORED_JSON}, {METRICS_JSON}, {METRICS_MD}, "
-        f"{ANALYSIS_JSON}, and {ANALYSIS_MD}"
+        f"{ANALYSIS_JSON}, {ANALYSIS_MD}, "
+        f"{INVESTIGATION_JSON}, and {INVESTIGATION_MD}"
     )
 
 

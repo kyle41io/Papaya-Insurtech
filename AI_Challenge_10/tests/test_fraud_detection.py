@@ -11,6 +11,7 @@ sys.path.insert(0, str(ROOT / "src"))
 
 from fraud_detection.config import BUNDLE_MAPPINGS, RULE_WEIGHTS, VALID_DIAGNOSIS_PROCEDURES
 from fraud_detection.generator import TARGET_FRAUD_COUNTS, fraud_pattern_counts, generate_claims
+from fraud_detection.investigation import build_investigation_report
 from fraud_detection.metrics import build_analysis_report, evaluate_metrics
 from fraud_detection.rules import build_context, evaluate_claim
 from fraud_detection.scoring import MAX_WEIGHT_SUM, risk_score_from_weights, score_claims
@@ -29,6 +30,7 @@ class FraudDetectionTestCase(unittest.TestCase):
             processing_seconds=cls.processing_seconds,
         )
         cls.analysis = build_analysis_report(cls.claims, cls.results)
+        cls.investigation = build_investigation_report(cls.claims, cls.results)
         cls.result_by_id = {result.claim_id: result for result in cls.results}
 
     def test_dataset_has_exactly_2000_claims(self) -> None:
@@ -136,6 +138,42 @@ class FraudDetectionTestCase(unittest.TestCase):
                 self.assertIn("risk_score", sample)
                 self.assertIn("rules", sample)
                 self.assertIn("evidence", sample)
+
+    def test_investigation_threshold_curve_contains_tradeoff_metrics(self) -> None:
+        curve = self.investigation["threshold_curve"]
+        self.assertGreaterEqual(len(curve), 5)
+        for item in curve:
+            self.assertIn("threshold", item)
+            self.assertIn("review_volume", item)
+            self.assertIn("precision", item)
+            self.assertIn("recall", item)
+            self.assertIn("f1_score", item)
+
+    def test_investigation_recommends_existing_threshold(self) -> None:
+        thresholds = {item["threshold"] for item in self.investigation["threshold_curve"]}
+        self.assertIn(self.investigation["recommended_threshold"]["threshold"], thresholds)
+
+    def test_investigation_review_queue_is_sorted_and_actionable(self) -> None:
+        queue = self.investigation["review_queue"]
+        self.assertEqual(len(queue), 30)
+        scores = [item["risk_score"] for item in queue]
+        self.assertEqual(scores, sorted(scores, reverse=True))
+        for item in queue:
+            self.assertIn("recommended_action", item)
+            self.assertIn("evidence", item)
+            self.assertGreater(len(item["evidence"]), 0)
+
+    def test_investigation_provider_profiles_are_ranked(self) -> None:
+        profiles = self.investigation["provider_profiles"]
+        self.assertLessEqual(len(profiles), 10)
+        scores = [item["provider_risk_score"] for item in profiles]
+        self.assertEqual(scores, sorted(scores, reverse=True))
+        self.assertTrue(any(item["flagged_claims"] > 0 for item in profiles))
+
+    def test_investigation_hotspots_include_flagged_relationships(self) -> None:
+        hotspots = self.investigation["member_provider_hotspots"]
+        self.assertLessEqual(len(hotspots), 10)
+        self.assertTrue(all(item["flagged_claims"] > 0 for item in hotspots))
 
     def test_clean_claim_without_flags_scores_zero(self) -> None:
         clean_zero = next(

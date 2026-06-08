@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project implements a rule-based insurance fraud scoring engine. It generates a deterministic dataset of 2,000 synthetic claims, embeds 200 known fraudulent claims across eight fraud patterns, scores every claim from 0 to 100, and reports precision, recall, false-positive rate, rule hit counts, runtime, rule-level precision, risk-band distribution, and review samples.
+This project implements a rule-based insurance fraud scoring engine. It generates a deterministic dataset of 2,000 synthetic claims, embeds 200 known fraudulent claims across eight fraud patterns, scores every claim from 0 to 100, and produces both model-quality reports and an analyst investigation workbench.
 
 The solution uses only the Python standard library so reviewers can run it immediately.
 
@@ -32,15 +32,30 @@ Generated outputs:
 - `data/metrics_report.md`
 - `data/analysis_report.json`
 - `data/analysis_report.md`
+- `data/investigation_report.json`
+- `data/investigation_report.md`
 
 ## Review Artifacts
 
-The project produces two reviewer-facing reports:
+The project produces three reviewer-facing reports:
 
 - `metrics_report.md`: high-level model quality, confusion matrix, rule hit counts, embedded fraud counts, and severity rationale.
 - `analysis_report.md`: operational analysis with top suspicious claims, risk-band distribution, rule-level precision, fraud-pattern coverage, false-positive examples, and false-negative examples.
+- `investigation_report.md`: analyst workbench with threshold sensitivity, recommended review threshold, prioritized review queue, provider risk profiles, and suspicious member-provider relationships.
 
-This split keeps the headline metrics easy to scan while still showing the evidence a reviewer would need before trusting the scoring engine.
+This split keeps the headline metrics easy to scan while still showing the evidence a reviewer would need before trusting and operating the scoring engine.
+
+## Advanced Investigation Layer
+
+Beyond the required scoring output, this solution includes an investigation layer that simulates how the engine would be used by a fraud operations team:
+
+- Threshold sensitivity compares precision, recall, false-positive rate, F1 score, and manual review volume at several risk-score cutoffs.
+- The recommended review threshold is selected from the best F1 trade-off, with lower false-positive rate preferred on ties.
+- The analyst review queue ranks the highest-risk claims and assigns a recommended action such as manual review, medical-record request, or special investigation.
+- Provider profiles aggregate suspicious behavior by provider, including flagged rate, average risk score, suspicious amount, and dominant fraud rules.
+- Member-provider hotspots identify concentrated suspicious relationships that may indicate coordinated abuse.
+
+This turns the project from a static rule checker into a small decision-support system.
 
 ## Detection Rules
 
