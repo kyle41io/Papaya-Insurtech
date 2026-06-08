@@ -44,7 +44,7 @@ const plans = [
 ];
 
 const rows = [
-  { id: "premium", label: "Monthly premium", best: "lowest" },
+  { id: "premium", label: "Monthly premium", best: null },
   { id: "annual", label: "Annual limit", best: "highest" },
   { id: "outpatient", label: "Outpatient care", best: "highest" },
   { id: "inpatient", label: "Inpatient care", best: "highest" },
@@ -52,8 +52,18 @@ const rows = [
   { id: "maternity", label: "Maternity", best: "highest" },
   { id: "copay", label: "Copay", best: "lowest" },
   { id: "waiting", label: "Waiting period", best: "lowest" },
-  { id: "highlights", label: "Highlights", best: null },
 ];
+
+const chartRows = new Set([
+  "premium",
+  "annual",
+  "outpatient",
+  "inpatient",
+  "dental",
+  "maternity",
+  "copay",
+  "waiting",
+]);
 
 const currencyFormatter = new Intl.NumberFormat("en-US", {
   style: "currency",
@@ -83,8 +93,7 @@ function escapeHtml(value) {
 }
 
 function statusHtml(included, label) {
-  const icon = included ? checkIcon() : crossIcon();
-  return `<span class="status ${included ? "included" : "missing"}"><span class="status-icon">${icon}</span>${escapeHtml(label)}</span>`;
+  return `<span class="status ${included ? "included" : "missing"}">${escapeHtml(label)}</span>`;
 }
 
 function checkIcon() {
@@ -144,35 +153,37 @@ function cellContent(plan, rowId) {
 
   switch (rowId) {
     case "premium":
-      return metric(`${money(plan.monthly_premium)}`, "per member per month");
+      return metric(`${money(plan.monthly_premium)}`, "per member per month", compareBar(plan, rowId));
     case "annual":
-      return metric(money(plan.annual_limit), "maximum annual coverage");
+      return metric(money(plan.annual_limit), "maximum annual coverage", compareBar(plan, rowId));
     case "outpatient":
       return metric(
         `${money(b.outpatient.limit_per_visit)} per visit`,
         isUnlimited(b.outpatient.visits_per_year)
           ? "unlimited visits per year"
-          : `${number(b.outpatient.visits_per_year)} visits per year`
+          : `${number(b.outpatient.visits_per_year)} visits per year`,
+        compareBar(plan, rowId)
       );
     case "inpatient":
       return metric(
         `${money(b.inpatient.limit_per_day)} per day`,
         isUnlimited(b.inpatient.days_per_year)
           ? "unlimited days per year"
-          : `${number(b.inpatient.days_per_year)} days per year`
+          : `${number(b.inpatient.days_per_year)} days per year`,
+        compareBar(plan, rowId)
       );
     case "dental":
       return b.dental
-        ? `${statusHtml(true, "Included")}${metric(money(b.dental.limit_per_year), "per year")}`
+        ? `${statusHtml(true, "Included")}${metric(money(b.dental.limit_per_year), "per year", compareBar(plan, rowId))}`
         : statusHtml(false, "Not included");
     case "maternity":
       return b.maternity
-        ? `${statusHtml(true, "Included")}${metric(money(b.maternity.limit_per_pregnancy), "per pregnancy")}`
+        ? `${statusHtml(true, "Included")}${metric(money(b.maternity.limit_per_pregnancy), "per pregnancy", compareBar(plan, rowId))}`
         : statusHtml(false, "Not included");
     case "copay":
-      return metric(`${plan.copay_percentage}%`, "member cost share");
+      return metric(`${plan.copay_percentage}%`, "member cost share", compareBar(plan, rowId));
     case "waiting":
-      return metric(`${plan.waiting_period_days} days`, "before coverage starts");
+      return metric(`${plan.waiting_period_days} days`, "before coverage starts", compareBar(plan, rowId));
     case "highlights":
       return `<ul class="summary-list">${plan.highlights
         .map((item) => `<li><span class="dot-check"></span>${escapeHtml(item)}</li>`)
@@ -182,8 +193,48 @@ function cellContent(plan, rowId) {
   }
 }
 
-function metric(main, detail) {
-  return `<span class="metric-value"><span class="metric-main">${escapeHtml(main)}</span><span class="metric-detail">${escapeHtml(detail)}</span></span>`;
+function metric(main, detail, bar = "") {
+  return `<span class="metric-value"><span class="metric-main">${escapeHtml(main)}</span><span class="metric-detail">${escapeHtml(detail)}</span>${bar}</span>`;
+}
+
+function compareBar(plan, rowId) {
+  if (!chartRows.has(rowId)) {
+    return "";
+  }
+
+  const row = rows.find((item) => item.id === rowId);
+  const values = plans
+    .map((item) => ({ plan: item, value: valueForRow(item, rowId) }))
+    .filter((item) => item.value !== null && item.value !== undefined);
+
+  if (!values.length) {
+    return "";
+  }
+
+  const finiteValues = values
+    .filter((item) => item.value !== Infinity)
+    .map((item) => item.value);
+  const hasUnlimited = values.some((item) => item.value === Infinity);
+  const current = valueForRow(plan, rowId);
+  const max = Math.max(...finiteValues);
+  const min = Math.min(...finiteValues);
+  let percent;
+
+  if (current === Infinity) {
+    percent = 100;
+  } else if (row?.best === "lowest" || rowId === "premium") {
+    percent = ((max - current) / Math.max(max - min, 1)) * 72 + 24;
+  } else if (hasUnlimited) {
+    percent = (current / Math.max(max, 1)) * 64 + 18;
+  } else {
+    percent = (current / Math.max(max, 1)) * 76 + 24;
+  }
+
+  return `
+    <span class="inline-bar" data-tier="${plan.name.toLowerCase()}" aria-hidden="true">
+      <span style="width: ${Math.round(percent)}%"></span>
+    </span>
+  `;
 }
 
 function bestPlanNames(row) {
@@ -237,28 +288,67 @@ function renderPlanCards(recommended) {
       const isRecommended = plan.name === recommended.name;
       return `
         <article class="plan-card" data-tier="${tier}">
-          <div class="plan-top">
-            <div>
-              <span class="tier-chip">${escapeHtml(plan.name)}</span>
-              <h3>${escapeHtml(plan.name)} Plan</h3>
+          <div class="plan-hero">
+            <div class="plan-top">
+              <span class="tier-chip"><span class="tier-dot"></span>${escapeHtml(plan.name)} tier</span>
+              ${isRecommended ? '<span class="recommended-badge">Best value</span>' : ""}
             </div>
-            ${isRecommended ? '<span class="recommended-badge">Recommended</span>' : ""}
+            <h3>${escapeHtml(plan.name)}</h3>
+            <p class="price"><span>$</span><strong>${number(plan.monthly_premium)}</strong> <em>/ month</em></p>
+            <p class="annual-line">Annual limit: ${money(plan.annual_limit)}</p>
+            <div class="ornament-line" aria-hidden="true"></div>
           </div>
-          <p class="price"><strong>${money(plan.monthly_premium)}</strong> <span>/ month</span></p>
-          <ul class="summary-list">
-            <li><span class="dot-check"></span><strong>${money(plan.annual_limit)}</strong> annual limit</li>
-            <li><span class="dot-check"></span><strong>${plan.copay_percentage}%</strong> copay</li>
-            <li><span class="dot-check"></span><strong>${plan.waiting_period_days} days</strong> waiting period</li>
-          </ul>
-          <ul class="highlight-list">
-            ${plan.highlights
-              .map((item) => `<li><span class="dot-check"></span>${escapeHtml(item)}</li>`)
-              .join("")}
-          </ul>
+          <div class="plan-body">
+            ${featureRow("Outpatient", outpatientSummary(plan), true)}
+            ${featureRow("Inpatient", inpatientSummary(plan), true)}
+            ${featureRow("Dental", dentalSummary(plan), Boolean(plan.benefits.dental))}
+            ${featureRow("Maternity", maternitySummary(plan), Boolean(plan.benefits.maternity))}
+            <div class="plan-stats">
+              <span><strong>${plan.copay_percentage}%</strong> copay</span>
+              <span><strong>${plan.waiting_period_days}</strong> wait days</span>
+            </div>
+          </div>
         </article>
       `;
     })
     .join("");
+}
+
+function featureRow(label, value, included) {
+  return `
+    <div class="feature-row ${included ? "available" : "unavailable"}">
+      <span class="feature-icon">${included ? checkIcon() : ""}</span>
+      <span><strong>${escapeHtml(label)}</strong>${escapeHtml(value)}</span>
+    </div>
+  `;
+}
+
+function outpatientSummary(plan) {
+  const outpatient = plan.benefits.outpatient;
+  const visits = isUnlimited(outpatient.visits_per_year)
+    ? "unlimited visits"
+    : `${number(outpatient.visits_per_year)} visits`;
+  return `${money(outpatient.limit_per_visit)} / visit, ${visits}`;
+}
+
+function inpatientSummary(plan) {
+  const inpatient = plan.benefits.inpatient;
+  const days = isUnlimited(inpatient.days_per_year)
+    ? "unlimited days"
+    : `${number(inpatient.days_per_year)} days`;
+  return `${money(inpatient.limit_per_day)} / day, ${days}`;
+}
+
+function dentalSummary(plan) {
+  return plan.benefits.dental
+    ? `${money(plan.benefits.dental.limit_per_year)} / year`
+    : "not included";
+}
+
+function maternitySummary(plan) {
+  return plan.benefits.maternity
+    ? `${money(plan.benefits.maternity.limit_per_pregnancy)} / pregnancy`
+    : "not included";
 }
 
 function renderTable() {
@@ -283,7 +373,6 @@ function renderTable() {
               return `
                 <td class="${isBest ? "best-cell" : ""}">
                   ${cellContent(plan, row.id)}
-                  ${isBest ? '<span class="best-pill">Best value</span>' : ""}
                 </td>
               `;
             })
@@ -314,7 +403,6 @@ function renderMobileComparison() {
                 <div class="mobile-row ${isBest ? "best-cell" : ""}">
                   <span class="mobile-row-label">${escapeHtml(row.label)}</span>
                   ${cellContent(plan, row.id)}
-                  ${isBest ? '<span class="best-pill">Best value</span>' : ""}
                 </div>
               `;
             })
@@ -326,8 +414,15 @@ function renderMobileComparison() {
 }
 
 function renderRecommendation(plan) {
-  document.querySelector("#recommended-plan-name").textContent = `${plan.name} Plan`;
-  document.querySelector("#recommended-plan-reason").textContent =
+  const name = document.querySelector("#recommended-plan-name");
+  const reason = document.querySelector("#recommended-plan-reason");
+
+  if (!name || !reason) {
+    return;
+  }
+
+  name.textContent = `${plan.name} Plan`;
+  reason.textContent =
     "Silver provides dental coverage, lower copay, shorter waiting period, and materially higher limits while keeping the monthly premium far below Gold.";
 }
 
