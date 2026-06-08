@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Papaya Insurtech insurance plan comparison page for Bronze, Silver, and Gold plans."
+    />
+    <title>Papaya Insurance Plan Comparison</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#comparison" aria-label="Papaya plan comparison">
+        <img src="assets/papaya-logo.png" alt="Papaya logo" class="brand-mark" />
+        <span class="brand-name">Papaya</span>
+      </a>
+      <nav class="header-nav" aria-label="Page sections">
+        <a href="#plans">Plans</a>
+        <a href="#comparison">Compare</a>
+        <a href="#method">Method</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Health coverage comparison</p>
+          <h1 id="page-title">Choose a plan with confidence.</h1>
+          <p class="intro">
+            A clear, side-by-side view of Papaya insurance tiers, designed for
+            members who need to understand limits, benefits, copay, and waiting
+            periods without reading policy fine print.
+          </p>
+        </div>
+        <div class="hero-panel" aria-label="Recommended plan summary">
+          <span class="panel-label">Recommended value</span>
+          <strong id="recommended-plan-name">Calculating...</strong>
+          <p id="recommended-plan-reason">
+            Evaluating coverage breadth, limits, copay, waiting period, and
+            monthly premium.
+          </p>
+        </div>
+      </section>
+
+      <section class="section-shell" id="plans" aria-labelledby="plans-title">
+        <div class="section-heading">
+          <p class="eyebrow">Plan tiers</p>
+          <h2 id="plans-title">Three levels of protection</h2>
+        </div>
+        <div class="plan-grid" id="plan-grid" aria-live="polite"></div>
+      </section>
+
+      <section
+        class="comparison-section"
+        id="comparison"
+        aria-labelledby="comparison-title"
+      >
+        <div class="section-heading">
+          <p class="eyebrow">Detailed comparison</p>
+          <h2 id="comparison-title">Benefits, limits, and pricing</h2>
+        </div>
+        <div class="comparison-wrap">
+          <table class="comparison-table" id="comparison-table"></table>
+        </div>
+        <div class="mobile-comparison" id="mobile-comparison"></div>
+      </section>
+
+      <section class="method-section" id="method" aria-labelledby="method-title">
+        <div class="method-copy">
+          <p class="eyebrow">Decision logic</p>
+          <h2 id="method-title">How the recommendation is calculated</h2>
+          <p>
+            The recommended plan balances practical coverage depth with price.
+            Annual limits, included benefit categories, lower copay, and shorter
+            waiting periods all improve the score, while a high monthly premium
+            reduces it. This keeps the recommendation focused on value for money,
+            not only the most expensive plan.
+          </p>
+        </div>
+        <div class="legend" aria-label="Comparison legend">
+          <span><span class="legend-dot included"></span>Included</span>
+          <span><span class="legend-dot missing"></span>Not included</span>
+          <span><span class="best-pill">Best value</span>Row winner</span>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

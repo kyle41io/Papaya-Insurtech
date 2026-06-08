@@ -11,3 +11,8 @@ Lần đầu đọc qua bộ Logical Questions, tôi cảm thấy là khá bất
 ## Tâm thế trả lời
 
 Trong bộ câu hỏi này, có những câu hỏi về con người nói chung — những quan sát có thể áp dụng cho bất kỳ ai — và cũng có những câu chạm vào trải nghiệm hoàn toàn cá nhân. Theo tôi, mọi thứ trong cuộc sống đều có phần tổng quát và phần riêng biệt, hay nói theo ngôn ngữ kỹ thuật là *edge case*. Mình có thể tự tin đưa ra một lý thuyết, nhận định mà tự đắc rằng ai cũng sẽ đồng tình, rồi lại phát hiện ra có những người phản đối — thậm chí bản thân mình đôi khi chính là cái edge case đó mà không hề hay biết. Trên thế giới này, nếu cứ chỉ có trắng - đen, phải - trái, đúng - sai thì đâu cần con người ta phải suy nghĩ, đấu tranh nhiều như vậy, đâu cần phải có đức tin, người dẫn dắt hay các giá trị đạo đức, tâm lý phức tạp. Các vùng xám kiểu đó chính là những thứ mà chúng ta cần tranh luận và phân định nhiều nhất, cái nào là phù hợp với mình, là giá trị mà mình nên theo đuổi... Với tâm thế đó, tôi sẽ cố gắng trả lời chân thật nhất có thể: không trình diễn, không uốn câu chữ cho vừa tai người đọc, chỉ mô tả đúng những gì tôi quan sát và suy nghĩ — kể cả những phần còn mơ hồ, chưa chắc, hoặc thẳng thắn là chưa có câu trả lời.
+
+## AI Engineering Challenges
+
+- [AI Challenge 01 — Insurance Plan Comparison Page](AI_Challenge_01/)
+- Live URL: <https://kyle41io.github.io/Papaya-Insurtech/AI_Challenge_01/>
