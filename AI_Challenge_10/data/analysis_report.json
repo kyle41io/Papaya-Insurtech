@@ -1,0 +1,667 @@
+{
+  "top_suspicious_claims": [
+    {
+      "claim_id": "CLM-01891",
+      "risk_score": 40,
+      "fraud_label": true,
+      "fraud_patterns": [
+        "unbundling"
+      ],
+      "rules": [
+        "upcoding",
+        "unbundling",
+        "diagnosis_procedure_mismatch"
+      ],
+      "evidence": [
+        "Submitted amount 23,760 for procedure OP-101 is 5.3 standard deviations above the mean of 3,217",
+        "Procedures OP-101, OP-201, OP-301 were billed separately although bundle BND-CARDIAC should be used",
+        "Diagnosis M54.5 is not clinically associated with procedure(s) OP-301"
+      ]
+    },
+    {
+      "claim_id": "CLM-01893",
+      "risk_score": 40,
+      "fraud_label": true,
+      "fraud_patterns": [
+        "unbundling"
+      ],
+      "rules": [
+        "upcoding",
+        "unbundling",
+        "diagnosis_procedure_mismatch"
+      ],
+      "evidence": [
+        "Submitted amount 78,300 for procedure IP-101 is 34.8 standard deviations above the mean of 26,296",
+        "Procedures IP-101, OP-102, SUR-101 were billed separately although bundle BND-MINOR-SURGERY should be used",
+        "Diagnosis O80 is not clinically associated with procedure(s) OP-102, SUR-101"
+      ]
+    },
+    {
+      "claim_id": "CLM-01896",
+      "risk_score": 40,
+      "fraud_label": true,
+      "fraud_patterns": [
+        "unbundling"
+      ],
+      "rules": [
+        "upcoding",
+        "unbundling",
+        "diagnosis_procedure_mismatch"
+      ],
+      "evidence": [
+        "Submitted amount 23,760 for procedure OP-101 is 5.3 standard deviations above the mean of 3,217",
+        "Procedures OP-101, OP-201, OP-301 were billed separately although bundle BND-CARDIAC should be used",
+        "Diagnosis E11.9 is not clinically associated with procedure(s) OP-201, OP-301"
+      ]
+    },
+    {
+      "claim_id": "CLM-01898",
+      "risk_score": 40,
+      "fraud_label": true,
+      "fraud_patterns": [
+        "unbundling"
+      ],
+      "rules": [
+        "upcoding",
+        "unbundling",
+        "diagnosis_procedure_mismatch"
+      ],
+      "evidence": [
+        "Submitted amount 78,300 for procedure IP-101 is 34.8 standard deviations above the mean of 26,296",
+        "Procedures IP-101, OP-102, SUR-101 were billed separately although bundle BND-MINOR-SURGERY should be used",
+        "Diagnosis K35.8 is not clinically associated with procedure(s) OP-102"
+      ]
+    },
+    {
+      "claim_id": "CLM-01900",
+      "risk_score": 40,
+      "fraud_label": true,
+      "fraud_patterns": [
+        "unbundling"
+      ],
+      "rules": [
+        "upcoding",
+        "unbundling",
+        "diagnosis_procedure_mismatch"
+      ],
+      "evidence": [
+        "Submitted amount 27,000 for procedure OP-101 is 6.1 standard deviations above the mean of 3,217",
+        "Procedures OP-101, OP-102, OP-401 were billed separately although bundle BND-DIABETES should be used",
+        "Diagnosis H10.9 is not clinically associated with procedure(s) OP-401"
+      ]
+    },
+    {
+      "claim_id": "CLM-01903",
+      "risk_score": 40,
+      "fraud_label": true,
+      "fraud_patterns": [
+        "unbundling"
+      ],
+      "rules": [
+        "upcoding",
+        "unbundling",
+        "diagnosis_procedure_mismatch"
+      ],
+      "evidence": [
+        "Submitted amount 78,300 for procedure IP-101 is 34.8 standard deviations above the mean of 26,296",
+        "Procedures IP-101, OP-102, SUR-101 were billed separately although bundle BND-MINOR-SURGERY should be used",
+        "Diagnosis K35.8 is not clinically associated with procedure(s) OP-102"
+      ]
+    },
+    {
+      "claim_id": "CLM-01904",
+      "risk_score": 40,
+      "fraud_label": true,
+      "fraud_patterns": [
+        "unbundling"
+      ],
+      "rules": [
+        "upcoding",
+        "unbundling",
+        "diagnosis_procedure_mismatch"
+      ],
+      "evidence": [
+        "Submitted amount 120,420 for procedure IP-201 is 22.2 standard deviations above the mean of 37,024",
+        "Procedures IP-201, OP-201, SUR-201 were billed separately although bundle BND-ORTHO should be used",
+        "Diagnosis O80 is not clinically associated with procedure(s) OP-201, SUR-201"
+      ]
+    },
+    {
+      "claim_id": "CLM-01905",
+      "risk_score": 40,
+      "fraud_label": true,
+      "fraud_patterns": [
+        "unbundling"
+      ],
+      "rules": [
+        "upcoding",
+        "unbundling",
+        "diagnosis_procedure_mismatch"
+      ],
+      "evidence": [
+        "Submitted amount 27,000 for procedure OP-101 is 6.1 standard deviations above the mean of 3,217",
+        "Procedures OP-101, OP-102, OP-401 were billed separately although bundle BND-DIABETES should be used",
+        "Diagnosis M54.5 is not clinically associated with procedure(s) OP-102, OP-401"
+      ]
+    },
+    {
+      "claim_id": "CLM-01906",
+      "risk_score": 40,
+      "fraud_label": true,
+      "fraud_patterns": [
+        "unbundling"
+      ],
+      "rules": [
+        "upcoding",
+        "unbundling",
+        "diagnosis_procedure_mismatch"
+      ],
+      "evidence": [
+        "Submitted amount 23,760 for procedure OP-101 is 5.3 standard deviations above the mean of 3,217",
+        "Procedures OP-101, OP-201, OP-301 were billed separately although bundle BND-CARDIAC should be used",
+        "Diagnosis I10 is not clinically associated with procedure(s) OP-201"
+      ]
+    },
+    {
+      "claim_id": "CLM-01908",
+      "risk_score": 40,
+      "fraud_label": true,
+      "fraud_patterns": [
+        "unbundling"
+      ],
+      "rules": [
+        "upcoding",
+        "unbundling",
+        "diagnosis_procedure_mismatch"
+      ],
+      "evidence": [
+        "Submitted amount 78,300 for procedure IP-101 is 34.8 standard deviations above the mean of 26,296",
+        "Procedures IP-101, OP-102, SUR-101 were billed separately although bundle BND-MINOR-SURGERY should be used",
+        "Diagnosis K35.8 is not clinically associated with procedure(s) OP-102"
+      ]
+    },
+    {
+      "claim_id": "CLM-01910",
+      "risk_score": 40,
+      "fraud_label": true,
+      "fraud_patterns": [
+        "unbundling"
+      ],
+      "rules": [
+        "upcoding",
+        "unbundling",
+        "diagnosis_procedure_mismatch"
+      ],
+      "evidence": [
+        "Submitted amount 27,000 for procedure OP-101 is 6.1 standard deviations above the mean of 3,217",
+        "Procedures OP-101, OP-102, OP-401 were billed separately although bundle BND-DIABETES should be used",
+        "Diagnosis H10.9 is not clinically associated with procedure(s) OP-401"
+      ]
+    },
+    {
+      "claim_id": "CLM-01911",
+      "risk_score": 40,
+      "fraud_label": true,
+      "fraud_patterns": [
+        "unbundling"
+      ],
+      "rules": [
+        "upcoding",
+        "unbundling",
+        "diagnosis_procedure_mismatch"
+      ],
+      "evidence": [
+        "Submitted amount 23,760 for procedure OP-101 is 5.3 standard deviations above the mean of 3,217",
+        "Procedures OP-101, OP-201, OP-301 were billed separately although bundle BND-CARDIAC should be used",
+        "Diagnosis H10.9 is not clinically associated with procedure(s) OP-201, OP-301"
+      ]
+    },
+    {
+      "claim_id": "CLM-01913",
+      "risk_score": 40,
+      "fraud_label": true,
+      "fraud_patterns": [
+        "unbundling"
+      ],
+      "rules": [
+        "upcoding",
+        "unbundling",
+        "diagnosis_procedure_mismatch"
+      ],
+      "evidence": [
+        "Submitted amount 78,300 for procedure IP-101 is 34.8 standard deviations above the mean of 26,296",
+        "Procedures IP-101, OP-102, SUR-101 were billed separately although bundle BND-MINOR-SURGERY should be used",
+        "Diagnosis N18.9 is not clinically associated with procedure(s) OP-102, SUR-101"
+      ]
+    },
+    {
+      "claim_id": "CLM-01914",
+      "risk_score": 40,
+      "fraud_label": true,
+      "fraud_patterns": [
+        "unbundling"
+      ],
+      "rules": [
+        "upcoding",
+        "unbundling",
+        "diagnosis_procedure_mismatch"
+      ],
+      "evidence": [
+        "Submitted amount 120,420 for procedure IP-201 is 22.2 standard deviations above the mean of 37,024",
+        "Procedures IP-201, OP-201, SUR-201 were billed separately although bundle BND-ORTHO should be used",
+        "Diagnosis O80 is not clinically associated with procedure(s) OP-201, SUR-201"
+      ]
+    },
+    {
+      "claim_id": "CLM-01915",
+      "risk_score": 40,
+      "fraud_label": true,
+      "fraud_patterns": [
+        "unbundling"
+      ],
+      "rules": [
+        "upcoding",
+        "unbundling",
+        "diagnosis_procedure_mismatch"
+      ],
+      "evidence": [
+        "Submitted amount 27,000 for procedure OP-101 is 6.1 standard deviations above the mean of 3,217",
+        "Procedures OP-101, OP-102, OP-401 were billed separately although bundle BND-DIABETES should be used",
+        "Diagnosis J06.9 is not clinically associated with procedure(s) OP-401"
+      ]
+    },
+    {
+      "claim_id": "CLM-01822",
+      "risk_score": 30,
+      "fraud_label": true,
+      "fraud_patterns": [
+        "duplicate_claim"
+      ],
+      "rules": [
+        "duplicate_claim",
+        "upcoding"
+      ],
+      "evidence": [
+        "Claim duplicates an earlier submission for member MBR-0129, provider PROV-001, date 2024-10-10, and diagnosis K02.9",
+        "Submitted amount 3,609 for procedure DEN-101 is 2.4 standard deviations above the mean of 2,969"
+      ]
+    },
+    {
+      "claim_id": "CLM-01892",
+      "risk_score": 27,
+      "fraud_label": true,
+      "fraud_patterns": [
+        "unbundling"
+      ],
+      "rules": [
+        "upcoding",
+        "unbundling"
+      ],
+      "evidence": [
+        "Submitted amount 30,240 for procedure DEN-101 is 103.7 standard deviations above the mean of 2,969",
+        "Procedures DEN-101, DEN-201, DEN-301 were billed separately although bundle BND-DENTAL should be used"
+      ]
+    },
+    {
+      "claim_id": "CLM-01894",
+      "risk_score": 27,
+      "fraud_label": true,
+      "fraud_patterns": [
+        "unbundling"
+      ],
+      "rules": [
+        "upcoding",
+        "unbundling"
+      ],
+      "evidence": [
+        "Submitted amount 120,420 for procedure IP-201 is 22.2 standard deviations above the mean of 37,024",
+        "Procedures IP-201, OP-201, SUR-201 were billed separately although bundle BND-ORTHO should be used"
+      ]
+    },
+    {
+      "claim_id": "CLM-01895",
+      "risk_score": 27,
+      "fraud_label": true,
+      "fraud_patterns": [
+        "unbundling"
+      ],
+      "rules": [
+        "upcoding",
+        "unbundling"
+      ],
+      "evidence": [
+        "Submitted amount 27,000 for procedure OP-101 is 6.1 standard deviations above the mean of 3,217",
+        "Procedures OP-101, OP-102, OP-401 were billed separately although bundle BND-DIABETES should be used"
+      ]
+    },
+    {
+      "claim_id": "CLM-01897",
+      "risk_score": 27,
+      "fraud_label": true,
+      "fraud_patterns": [
+        "unbundling"
+      ],
+      "rules": [
+        "upcoding",
+        "unbundling"
+      ],
+      "evidence": [
+        "Submitted amount 30,240 for procedure DEN-101 is 103.7 standard deviations above the mean of 2,969",
+        "Procedures DEN-101, DEN-201, DEN-301 were billed separately although bundle BND-DENTAL should be used"
+      ]
+    }
+  ],
+  "risk_bands": {
+    "0": {
+      "claims": 1765,
+      "fraud": 6
+    },
+    "1-24": {
+      "claims": 208,
+      "fraud": 167
+    },
+    "25-49": {
+      "claims": 27,
+      "fraud": 27
+    },
+    "50-74": {
+      "claims": 0,
+      "fraud": 0
+    },
+    "75-100": {
+      "claims": 0,
+      "fraud": 0
+    }
+  },
+  "rule_summary": {
+    "amount_clustering": {
+      "hits": 21,
+      "true_hits": 20,
+      "false_hits": 1,
+      "precision": 0.9524
+    },
+    "diagnosis_procedure_mismatch": {
+      "hits": 35,
+      "true_hits": 35,
+      "false_hits": 0,
+      "precision": 1.0
+    },
+    "duplicate_claim": {
+      "hits": 30,
+      "true_hits": 30,
+      "false_hits": 0,
+      "precision": 1.0
+    },
+    "phantom_billing": {
+      "hits": 31,
+      "true_hits": 25,
+      "false_hits": 6,
+      "precision": 0.8065
+    },
+    "rapid_resubmission": {
+      "hits": 44,
+      "true_hits": 32,
+      "false_hits": 12,
+      "precision": 0.7273
+    },
+    "unbundling": {
+      "hits": 25,
+      "true_hits": 25,
+      "false_hits": 0,
+      "precision": 1.0
+    },
+    "upcoding": {
+      "hits": 91,
+      "true_hits": 71,
+      "false_hits": 20,
+      "precision": 0.7802
+    },
+    "weekend_anomaly": {
+      "hits": 23,
+      "true_hits": 20,
+      "false_hits": 3,
+      "precision": 0.8696
+    }
+  },
+  "fraud_pattern_coverage": {
+    "amount_clustering": {
+      "embedded": 20,
+      "detected_any_rule": 20,
+      "detected_matching_rule": 20,
+      "matching_rule_recall": 1.0
+    },
+    "diagnosis_procedure_mismatch": {
+      "embedded": 20,
+      "detected_any_rule": 20,
+      "detected_matching_rule": 20,
+      "matching_rule_recall": 1.0
+    },
+    "duplicate_claim": {
+      "embedded": 30,
+      "detected_any_rule": 30,
+      "detected_matching_rule": 30,
+      "matching_rule_recall": 1.0
+    },
+    "phantom_billing": {
+      "embedded": 25,
+      "detected_any_rule": 25,
+      "detected_matching_rule": 25,
+      "matching_rule_recall": 1.0
+    },
+    "rapid_resubmission": {
+      "embedded": 30,
+      "detected_any_rule": 30,
+      "detected_matching_rule": 30,
+      "matching_rule_recall": 1.0
+    },
+    "unbundling": {
+      "embedded": 25,
+      "detected_any_rule": 25,
+      "detected_matching_rule": 25,
+      "matching_rule_recall": 1.0
+    },
+    "upcoding": {
+      "embedded": 30,
+      "detected_any_rule": 24,
+      "detected_matching_rule": 24,
+      "matching_rule_recall": 0.8
+    },
+    "weekend_anomaly": {
+      "embedded": 20,
+      "detected_any_rule": 20,
+      "detected_matching_rule": 20,
+      "matching_rule_recall": 1.0
+    }
+  },
+  "false_positive_samples": [
+    {
+      "claim_id": "CLM-00950",
+      "risk_score": 20,
+      "fraud_label": false,
+      "fraud_patterns": [],
+      "rules": [
+        "upcoding",
+        "amount_clustering"
+      ],
+      "evidence": [
+        "Submitted amount 47,954 for procedure SUR-101 is 3.0 standard deviations above the mean of 41,788",
+        "Amount 47,954 is 96% of the 50,000 auto-approval threshold"
+      ]
+    },
+    {
+      "claim_id": "CLM-01795",
+      "risk_score": 17,
+      "fraud_label": false,
+      "fraud_patterns": [],
+      "rules": [
+        "phantom_billing"
+      ],
+      "evidence": [
+        "Provider PROV-049 submitted 31 claims on 2024-08-14, exceeding the 30-claim daily review threshold"
+      ]
+    },
+    {
+      "claim_id": "CLM-01796",
+      "risk_score": 17,
+      "fraud_label": false,
+      "fraud_patterns": [],
+      "rules": [
+        "phantom_billing"
+      ],
+      "evidence": [
+        "Provider PROV-049 submitted 31 claims on 2024-08-14, exceeding the 30-claim daily review threshold"
+      ]
+    },
+    {
+      "claim_id": "CLM-01797",
+      "risk_score": 17,
+      "fraud_label": false,
+      "fraud_patterns": [],
+      "rules": [
+        "phantom_billing"
+      ],
+      "evidence": [
+        "Provider PROV-049 submitted 31 claims on 2024-08-14, exceeding the 30-claim daily review threshold"
+      ]
+    },
+    {
+      "claim_id": "CLM-01798",
+      "risk_score": 17,
+      "fraud_label": false,
+      "fraud_patterns": [],
+      "rules": [
+        "phantom_billing"
+      ],
+      "evidence": [
+        "Provider PROV-049 submitted 31 claims on 2024-08-14, exceeding the 30-claim daily review threshold"
+      ]
+    },
+    {
+      "claim_id": "CLM-01799",
+      "risk_score": 17,
+      "fraud_label": false,
+      "fraud_patterns": [],
+      "rules": [
+        "phantom_billing"
+      ],
+      "evidence": [
+        "Provider PROV-049 submitted 31 claims on 2024-08-14, exceeding the 30-claim daily review threshold"
+      ]
+    },
+    {
+      "claim_id": "CLM-01800",
+      "risk_score": 17,
+      "fraud_label": false,
+      "fraud_patterns": [],
+      "rules": [
+        "phantom_billing"
+      ],
+      "evidence": [
+        "Provider PROV-049 submitted 31 claims on 2024-08-14, exceeding the 30-claim daily review threshold"
+      ]
+    },
+    {
+      "claim_id": "CLM-00022",
+      "risk_score": 13,
+      "fraud_label": false,
+      "fraud_patterns": [],
+      "rules": [
+        "upcoding"
+      ],
+      "evidence": [
+        "Submitted amount 3,609 for procedure DEN-101 is 2.4 standard deviations above the mean of 2,969"
+      ]
+    },
+    {
+      "claim_id": "CLM-00042",
+      "risk_score": 13,
+      "fraud_label": false,
+      "fraud_patterns": [],
+      "rules": [
+        "upcoding"
+      ],
+      "evidence": [
+        "Submitted amount 29,569 for procedure IP-101 is 2.2 standard deviations above the mean of 26,296"
+      ]
+    },
+    {
+      "claim_id": "CLM-00087",
+      "risk_score": 13,
+      "fraud_label": false,
+      "fraud_patterns": [],
+      "rules": [
+        "upcoding"
+      ],
+      "evidence": [
+        "Submitted amount 17,939 for procedure DEN-301 is 2.3 standard deviations above the mean of 15,770"
+      ]
+    }
+  ],
+  "false_negative_samples": [
+    {
+      "claim_id": "CLM-01865",
+      "risk_score": 0,
+      "fraud_label": true,
+      "fraud_patterns": [
+        "upcoding"
+      ],
+      "rules": [],
+      "evidence": []
+    },
+    {
+      "claim_id": "CLM-01870",
+      "risk_score": 0,
+      "fraud_label": true,
+      "fraud_patterns": [
+        "upcoding"
+      ],
+      "rules": [],
+      "evidence": []
+    },
+    {
+      "claim_id": "CLM-01875",
+      "risk_score": 0,
+      "fraud_label": true,
+      "fraud_patterns": [
+        "upcoding"
+      ],
+      "rules": [],
+      "evidence": []
+    },
+    {
+      "claim_id": "CLM-01880",
+      "risk_score": 0,
+      "fraud_label": true,
+      "fraud_patterns": [
+        "upcoding"
+      ],
+      "rules": [],
+      "evidence": []
+    },
+    {
+      "claim_id": "CLM-01885",
+      "risk_score": 0,
+      "fraud_label": true,
+      "fraud_patterns": [
+        "upcoding"
+      ],
+      "rules": [],
+      "evidence": []
+    },
+    {
+      "claim_id": "CLM-01890",
+      "risk_score": 0,
+      "fraud_label": true,
+      "fraud_patterns": [
+        "upcoding"
+      ],
+      "rules": [],
+      "evidence": []
+    }
+  ],
+  "review_notes": [
+    "Risk score > 0 is treated as the review threshold for metrics.",
+    "False positives are acceptable when the evidence is actionable because the engine is designed as a triage tool, not an automatic denial system.",
+    "False negatives are listed explicitly so reviewers can see remaining blind spots."
+  ]
+}

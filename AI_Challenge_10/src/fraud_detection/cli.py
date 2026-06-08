@@ -4,7 +4,7 @@ import argparse
 from pathlib import Path
 
 from .generator import generate_claims
-from .metrics import evaluate_metrics, markdown_report, timed
+from .metrics import analysis_markdown, build_analysis_report, evaluate_metrics, markdown_report, timed
 from .models import read_claims_csv, write_claims_csv, write_json
 from .scoring import score_claims
 
@@ -15,6 +15,8 @@ CLAIMS_CSV = DATA_DIR / "claims.csv"
 SCORED_JSON = DATA_DIR / "scored_claims.json"
 METRICS_JSON = DATA_DIR / "metrics_report.json"
 METRICS_MD = DATA_DIR / "metrics_report.md"
+ANALYSIS_JSON = DATA_DIR / "analysis_report.json"
+ANALYSIS_MD = DATA_DIR / "analysis_report.md"
 
 
 def generate_command(args: argparse.Namespace) -> None:
@@ -27,15 +29,22 @@ def score_command(args: argparse.Namespace) -> None:
     claims = read_claims_csv(CLAIMS_CSV)
     results, processing_seconds = timed(lambda: score_claims(claims))
     metrics = evaluate_metrics(claims, results, processing_seconds=processing_seconds)
+    analysis = build_analysis_report(claims, results)
 
     write_json(SCORED_JSON, [result.to_dict() for result in results])
     write_json(METRICS_JSON, metrics.to_dict())
+    write_json(ANALYSIS_JSON, analysis)
     METRICS_MD.write_text(markdown_report(metrics), encoding="utf-8")
+    ANALYSIS_MD.write_text(analysis_markdown(analysis), encoding="utf-8")
 
     print(f"Scored {len(claims):,} claims in {processing_seconds:.4f}s")
     print(f"Recall: {metrics.recall:.2%}")
     print(f"False positive rate: {metrics.false_positive_rate:.2%}")
-    print(f"Wrote {SCORED_JSON}, {METRICS_JSON}, and {METRICS_MD}")
+    print(
+        "Wrote "
+        f"{SCORED_JSON}, {METRICS_JSON}, {METRICS_MD}, "
+        f"{ANALYSIS_JSON}, and {ANALYSIS_MD}"
+    )
 
 
 def run_command(args: argparse.Namespace) -> None:

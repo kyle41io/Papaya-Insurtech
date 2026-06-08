@@ -11,7 +11,7 @@ sys.path.insert(0, str(ROOT / "src"))
 
 from fraud_detection.config import BUNDLE_MAPPINGS, RULE_WEIGHTS, VALID_DIAGNOSIS_PROCEDURES
 from fraud_detection.generator import TARGET_FRAUD_COUNTS, fraud_pattern_counts, generate_claims
-from fraud_detection.metrics import evaluate_metrics
+from fraud_detection.metrics import build_analysis_report, evaluate_metrics
 from fraud_detection.rules import build_context, evaluate_claim
 from fraud_detection.scoring import MAX_WEIGHT_SUM, risk_score_from_weights, score_claims
 
@@ -28,6 +28,7 @@ class FraudDetectionTestCase(unittest.TestCase):
             cls.results,
             processing_seconds=cls.processing_seconds,
         )
+        cls.analysis = build_analysis_report(cls.claims, cls.results)
         cls.result_by_id = {result.claim_id: result for result in cls.results}
 
     def test_dataset_has_exactly_2000_claims(self) -> None:
@@ -108,6 +109,33 @@ class FraudDetectionTestCase(unittest.TestCase):
 
     def test_amount_clustering_rule_flags_embedded_cases(self) -> None:
         self.assert_pattern_rule_recall("amount_clustering", minimum=1.0)
+
+    def test_analysis_report_lists_top_twenty_suspicious_claims(self) -> None:
+        top_claims = self.analysis["top_suspicious_claims"]
+        self.assertEqual(len(top_claims), 20)
+        self.assertTrue(all(claim["risk_score"] > 0 for claim in top_claims))
+
+    def test_analysis_risk_bands_cover_every_claim(self) -> None:
+        total = sum(band["claims"] for band in self.analysis["risk_bands"].values())
+        self.assertEqual(total, len(self.claims))
+
+    def test_analysis_rule_summary_has_all_configured_rules(self) -> None:
+        self.assertEqual(set(self.analysis["rule_summary"]), set(RULE_WEIGHTS))
+
+    def test_analysis_pattern_coverage_has_every_embedded_pattern(self) -> None:
+        expected_patterns = set(TARGET_FRAUD_COUNTS)
+        actual_patterns = set(self.analysis["fraud_pattern_coverage"])
+        self.assertEqual(actual_patterns, expected_patterns)
+
+    def test_analysis_samples_are_bounded_and_actionable(self) -> None:
+        for key in ("false_positive_samples", "false_negative_samples"):
+            samples = self.analysis[key]
+            self.assertLessEqual(len(samples), 10)
+            for sample in samples:
+                self.assertIn("claim_id", sample)
+                self.assertIn("risk_score", sample)
+                self.assertIn("rules", sample)
+                self.assertIn("evidence", sample)
 
     def test_clean_claim_without_flags_scores_zero(self) -> None:
         clean_zero = next(
