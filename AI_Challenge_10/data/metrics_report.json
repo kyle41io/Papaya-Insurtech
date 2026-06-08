@@ -1,0 +1,33 @@
+{
+  "total_claims": 2000,
+  "labeled_fraud": 200,
+  "predicted_fraud": 235,
+  "true_positives": 194,
+  "false_positives": 41,
+  "false_negatives": 6,
+  "true_negatives": 1759,
+  "precision": 0.8255,
+  "recall": 0.97,
+  "false_positive_rate": 0.0228,
+  "processing_seconds": 0.0057,
+  "rule_hit_counts": {
+    "amount_clustering": 21,
+    "diagnosis_procedure_mismatch": 35,
+    "duplicate_claim": 30,
+    "phantom_billing": 31,
+    "rapid_resubmission": 44,
+    "unbundling": 25,
+    "upcoding": 91,
+    "weekend_anomaly": 23
+  },
+  "fraud_pattern_counts": {
+    "amount_clustering": 20,
+    "diagnosis_procedure_mismatch": 20,
+    "duplicate_claim": 30,
+    "phantom_billing": 25,
+    "rapid_resubmission": 30,
+    "unbundling": 25,
+    "upcoding": 30,
+    "weekend_anomaly": 20
+  }
+}

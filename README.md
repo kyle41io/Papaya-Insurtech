@@ -15,4 +15,5 @@ Trong bộ câu hỏi này, có những câu hỏi về con người nói chung 
 ## AI Engineering Challenges
 
 - [AI Challenge 01 — Insurance Plan Comparison Page](AI_Challenge_01/)
+- [AI Challenge 10 — Fraud Detection Scoring Engine](AI_Challenge_10/)
 - Live URL: <https://kyle41io.github.io/Papaya-Insurtech/AI_Challenge_01/>
