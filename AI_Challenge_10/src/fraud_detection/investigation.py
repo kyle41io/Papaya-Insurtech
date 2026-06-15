@@ -88,6 +88,8 @@ def review_queue_item(result: ScoreResult, claim: Claim) -> dict:
 
 
 def recommended_action(score: int) -> str:
+    # 13 is the normalized score of a single severity-4 rule
+    # (round(4 / 30 * 100) == 13), i.e. one upcoding/unbundling/mismatch hit.
     if score >= 30:
         return "Open special investigation case"
     if score >= 20:

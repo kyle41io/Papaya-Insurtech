@@ -6,6 +6,10 @@ This project implements a rule-based insurance fraud scoring engine. It generate
 
 The solution uses only the Python standard library so reviewers can run it immediately.
 
+## Requirements
+
+- Python 3.9 or newer. No third-party packages are required.
+
 ## Timeline Estimate
 
 - Domain modeling and rule design: 45 minutes

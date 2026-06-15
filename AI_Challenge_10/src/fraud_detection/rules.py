@@ -4,7 +4,7 @@ import statistics
 from collections import defaultdict
 from dataclasses import dataclass
 from datetime import date
-from typing import Callable, Dict, Iterable, List, Sequence
+from typing import Callable, Dict, Iterable, List, Optional, Sequence
 
 from .config import (
     AUTO_APPROVAL_THRESHOLD,
@@ -134,6 +134,10 @@ def rapid_resubmission(claim: Claim, context: RuleContext) -> Flag | None:
 
 
 def upcoding(claim: Claim, context: RuleContext) -> Flag | None:
+    # Known limitation: only the primary (first) procedure code is checked, and
+    # the per-procedure distribution is built from the total claim amount. This
+    # is accurate for single-procedure claims; a multi-procedure claim could
+    # hide an upcoded secondary code.
     primary_code = claim.procedure_codes[0]
     mean, std_dev = context.procedure_stats[primary_code]
     if std_dev <= 0:
@@ -238,7 +242,7 @@ def amount_clustering(claim: Claim, context: RuleContext) -> Flag | None:
     )
 
 
-RuleFunction = Callable[[Claim, RuleContext], Flag | None]
+RuleFunction = Callable[[Claim, RuleContext], Optional[Flag]]
 
 ALL_RULES: List[RuleFunction] = [
     duplicate_claim,
