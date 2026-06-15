@@ -109,20 +109,6 @@ The dataset includes `fraud_label` and `fraud_patterns` so metrics can be calcul
 
 I used AI assistance to decompose the fraud patterns, design deterministic edge cases, and review the implementation against the challenge criteria. I then verified the result with unit tests, generated metrics, and checked that the outputs meet the recall, false-positive-rate, and runtime targets.
 
-## Why This Is Estimated at 4-6 Hours
-
-The implementation itself can be written quickly with AI assistance, but the real work is making the output defensible:
-
-- Translating ambiguous fraud descriptions into deterministic, testable rules.
-- Designing synthetic data with enough normal variation that the rules are not trivially perfect.
-- Embedding labeled fraud cases without accidentally creating too many overlapping labels.
-- Calibrating severity weights so the score is useful for triage instead of just a binary flag.
-- Producing evidence strings that explain exactly why each claim was flagged.
-- Measuring false positives and false negatives so reviewers can see the remaining blind spots.
-- Writing tests that lock the dataset size, fraud coverage, runtime target, and rule behavior.
-
-AI reduces typing and boilerplate time, but the challenge still requires judgment around data quality, rule design, explainability, and validation.
-
 ## Reproducibility
 
 The default seed is `42`. To regenerate the same dataset and outputs:
